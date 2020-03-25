@@ -33,8 +33,8 @@ function objToSql(ob) {
 
 // Display all burgers
 var orm = {
-  selectAll: function(tableInput, cb) {
-    var queryString = 'SELECT * FROM ' + tableInput + ';';
+  selectAll: function(table, cb) {
+    var queryString = 'SELECT * FROM ' + table + ';';
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -43,14 +43,14 @@ var orm = {
     });
   },
   // Add one burger
-  insert: function(table, cols, vals, cb) {
+  insertBurger: function(table, cols, vals, cb) {
     var queryString = 'INSERT INTO ' + table;
 
     queryString += ' (';
     queryString += cols.toString();
     queryString += ') ';
     queryString += 'VALUES (';
-    queryString += printQuestionMarks(val.length);
+    queryString += printQuestionMarks(vals.length);
     queryString += ') ';
 
     console.log(queryString);
@@ -64,7 +64,7 @@ var orm = {
     });
   },
   // Updated burger status to devoured
-  update: function(table, objColVals, condition, cb) {
+  updateBurger: function(table, objColVals, condition, cb) {
     var queryString = 'UPDATE ' + table;
 
     queryString += 'SET';
@@ -81,7 +81,7 @@ var orm = {
     });
   },
   // Delete burger
-  delete: function(table, condition, cb) {
+  deleteBurger: function(table, condition, cb) {
     var queryString = 'DELETE FROM ' + table;
     queryString += 'WHERE';
     queryString += condition;
