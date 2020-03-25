@@ -1,42 +1,69 @@
 {{!-- Setup to have the template that can handlebars can render --}}
 
-{{!-- Create a button that will submit the user input into the database --}}
-<h1>Cats!</h1>
-
-<h2>Cats that are not sleepy!</h2>
-
-<ul>
-    {{#each cats}}
-    {{#unless sleepy}}
-    {{> cats/cat-block sleep=true}}
-    {{/unless}}
-    {{/each}}
-</ul>
-
-<h2>Cats that are sleepy!</h2>
-
-<ul>
-    {{#each burgers}}
-    {{#if devoured}}
-    {{> cats/cat-block sleep=false}}
-    <button type="submit">Devoured</button>
-    {{/if}}
-    {{/each}}
-</ul>
-
-<h2>Add a Burger</h2>
-<form class="create-form">
-
-    <div class="form-group">
-        <label for="ca">Burger Name:</label>
-        <input type="text" id="ca" name="name">
+<div class="container">
+    <div class="jumbotron text-center col-md-12">
+        <div class="container">
+            <h1 class="display-4">Eat Da Burger</h1>
+            <p class="lead">PickUp and Delivery, Every Bite counts...</p>
+            <img src="../assets/images/burgerOfDay.jpg" alt="Burger of the Day">
+        </div>
     </div>
 
-    <div class="form-group">
-        <label for="sleepy">Devoured?</label><br>
-        <input type="radio" name="sleepy" value="1" checked> Devoured!<br>
-        <input type="radio" name="sleepy" value="0"> Eaten
-    </div>
+    <div class="row">
+        <!-- Undevoured Burgers -->
+        <div class="col-md-4">
+            <div class="card text-white bg-dark" style="max-width: 25rem;">
+                <div class="card-header"><strong>Burgers Waiting to Be Devoured</strong></div>
+                <div class="card-body">
+                    <ul>
+                        {{#each burgers}}
+                        {{#unless devoured}}
+                        <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
+                        <button type="button" class="eatburger btn btn-warning" id="eatbutton" data-id="{{this.id}}"
+                            data-newDevoured="{{devour}}"><span class="fas fa-hamburger"></span>
+                        </button>
+                        <hr>
+                        {{/unless}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-    <button type="submit">Add Burger</button>
-</form>
+        <div class="col-md-4">
+            <div class="card text-white bg-dark" style="max-width: 25rem;">
+                <div class="card-header"><strong>Add Burgers</strong></div>
+                <div class="card-body" id="addnewburger">
+                    <form class="form-inline">
+                        <div class="form-group mb-5">
+                            <label for="newburger" id="addnewburger">New : </label>
+                            <input type="text" id="newburger" placeholder="Add New Burger">
+                            {{!-- Create a button in index.handlebars that will submit the user input into the database. --}}
+                            <button type="submit" class="btn btn-success" id="addburger"><span
+                                    class="fas fa-plus"></span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <!-- Devoured Burgers -->
+        <div class="col-md-4">
+            <div class="card text-white bg-dark" style="max-width: 25rem;">
+                <div class="card-header"><strong>Devoured Burgers</strong></div>
+                <div class="card-body">
+                    <ul>
+                        {{#each burgers}}
+                        {{#if devoured}}
+                        <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
+                        <button type="button" class="deleteburger btn btn-danger" id="trash" data-id="{{this.id}}"
+                            data-newDevoured="{{devour}}"><span class="fa fa-trash"></span></button>
+                        <hr>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

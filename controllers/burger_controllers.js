@@ -1,9 +1,10 @@
 // Import Dependencies
 var express = require('express');
-var router = express.Router();
 
 // Import the model
 var burger = require('../models/burger.js');
+
+var router = express.Router();
 
 // Create all routes with logic
 router.get('/', function(req, res) {
@@ -20,7 +21,7 @@ router.get('/', function(req, res) {
 router.post('/api/burgers', function(req, res) {
   burger.insert(
     ['burger_name', 'devoured'],
-    [req.body.name, req.body.devoured],
+    [req.body.burger_name, req.body.devoured],
     function(result) {
       // send back the ID
       res.json({ id: result.insertId });
@@ -40,7 +41,7 @@ router.put('/api/burgers/:id', function(req, res) {
     },
     condition,
     function(result) {
-      if (result.changedRows == 0) {
+      if (result.changedRows === 0) {
         // if no rows changed, send 404
         return res.status(404).end();
       } else {
@@ -55,7 +56,7 @@ router.delete('/api/burgers/:id', function(req, res) {
   var condition = 'id = ' + req.params.id;
 
   burger.delete(condition, function(result) {
-    if (result.affectedRows == 0) {
+    if (result.affectedRows === 0) {
       // If no rows changed, send 404
       return res.status(404).end();
     } else {
