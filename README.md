@@ -1,6 +1,6 @@
 # Eat Da Burger
 
-[![HitCount](http://hits.dwyl.com/{username}/{project}.svg)](http://hits.dwyl.com/{username}/{project})
+[![HitCount](http://hits.dwyl.com/{username}/{project}.svg)](http://hits.dwyl.com/{dangulo4}/{eat-da-burger})
 [![NPM Version](https://img.shields.io/npm/v/npm.svg?style=flat)]()
 
 - Eat-Da-Burger! is a restaurant app that lets users input the names of burgers they'd like to eat. Whenever a user submits a burger's name, your app will display the burger on the left side of the page -- waiting to be devoured.
