@@ -4,7 +4,7 @@
   "description": "Whenever a user submits a burger's name, your app will display the burger on the left side of the page -- waiting to be devoured.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
