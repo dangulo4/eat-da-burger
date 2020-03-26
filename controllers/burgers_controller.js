@@ -41,7 +41,7 @@ router.put('/api/burgers/:id', function(req, res) {
     },
     condition,
     function(result) {
-      if (result.changedRows === 0) {
+      if (result.changedRows == 0) {
         // if no rows changed, send 404
         return res.status(404).end();
       } else {
@@ -57,7 +57,7 @@ router.delete('/api/burgers/:id', function(req, res) {
   console.log('condition', condition);
 
   burger.deleteBurger(condition, function(result) {
-    if (result.changedRows === 0) {
+    if (result.affecteddRows == 0) {
       // If no rows changed, send 404
       return res.status(404).end();
     } else {

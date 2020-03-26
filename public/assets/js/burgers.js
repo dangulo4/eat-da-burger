@@ -26,7 +26,7 @@ $(function() {
   $('.eatburger').on('click', function(event) {
     event.preventDefault();
 
-    var id = $(this).data(id);
+    var id = $(this).data('id');
     var devouredState = {
       devoured: 1
     };
@@ -41,7 +41,7 @@ $(function() {
     });
   });
 
-  $('.trashburger').on('click', function(evet) {
+  $('.deleteburger').on('click', function(evet) {
     event.preventDefault();
 
     var id = $(this).data('id');
