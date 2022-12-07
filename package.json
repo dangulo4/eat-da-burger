@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/dangulo4/eat-da-burger#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "express-handlebars": "^3.1.0",
     "minimist": "^1.2.5",
     "mysql": "^2.18.1"
